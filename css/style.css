@@ -169,7 +169,7 @@ a:hover, a:focus {
     padding: 27px 17px 27px 17px;
 }
 
-.navigation-list li a:hover {
+.navigation-list li a:hover, .navigation-list li a:focus {
     box-shadow:
 	0 0 80px var(--text-color);
 }
@@ -234,7 +234,7 @@ svg {
 
 /* 4.1 buttons */
 
-button {
+button,input[type=submit] {
     /* overwrites browser defaults*/
     /* no border */
     border: 2px solid var(--secondary-color);
