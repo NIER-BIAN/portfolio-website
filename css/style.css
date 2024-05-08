@@ -41,6 +41,8 @@
 }
 
 body {
+
+    height: 100%;
     
     color: var(--secondary-color);
     font-family: 'Figtree', serif;
@@ -52,9 +54,14 @@ body {
     background-attachment: fixed;
 }
 
+
 /* ================
      2. Typography
    ================ */
+
+h1, h2, h3, main.p {
+    max-width: 75ch;
+}
 
 h1 {
     font-size: 33px;
@@ -71,7 +78,6 @@ a {
 }
 
 a:visited {
-    /* visited link */
     color: var(--text-color);
 }
 
@@ -147,24 +153,24 @@ a:hover, a:focus {
     margin-left: 20px;
 }
 
-/* Contact halo*/
+/* Contact halo */
 .navigation-list li a {
     border-radius: 50%;
     transition: box-shadow 0.75s;
     padding: 27px 5px 27px 5px;
 }
 
-/* Home halo*/
+/* Home halo */
 .navigation-list li:nth-child(1) a {
     padding: 27px 15px 27px 15px;
 }
 
-/* About halo*/
+/* About halo */
 .navigation-list li:nth-child(2) a {
     padding: 27px 12.5px 27px 12.5px;
 }
 
-/* Work halo*/
+/* Work halo */
 .navigation-list li:nth-child(3) a {
     padding: 27px 17px 27px 17px;
 }
@@ -204,6 +210,50 @@ main {
     border-radius: 50%;
 }
 
+#Earth-brackets {
+    padding: 0.25em;
+    font-family: "Source Code Pro", monospace;
+    color: var(--secondary-color);
+}
+
+#Earth {
+    margin: 0.35em;
+    position: relative;
+}
+
+#Earth::before, #Earth::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+#Earth::before {
+    background: var(--primary-color);
+    animation: typewriter 1.5s steps(5) 1s forwards;
+}
+
+#Earth::after {
+    width: 0.125em;
+    background: transparent;
+    animation: typewriter 1.5s steps(5) 1s forwards,
+	       blink 450ms steps(5) 8;
+}
+
+@keyframes typewriter {
+  to {
+    left: 100%;
+  }
+}
+
+@keyframes blink {
+  to {
+    background: var(--text-color);
+  }
+}
+
 /* 3.4 page-footer */
 
 svg {
@@ -228,6 +278,7 @@ svg {
   }
 }
 
+
 /* ================
     4. Components
    ================ */
@@ -235,8 +286,6 @@ svg {
 /* 4.1 buttons */
 
 button,input[type=submit] {
-    /* overwrites browser defaults*/
-    /* no border */
     border: 2px solid var(--secondary-color);
     /* takes the font from the outer container --- isn't font family inherited anyway? */
     font-family: inherit;
@@ -247,12 +296,10 @@ button,input[type=submit] {
     border-radius: 20px;
     border-bottom: 3px solid var(--dark-orange);
     transition: opacity 0.2s;
-    /* transition: [transition-property] [transition-duration] [transition-timing-function] [transition-delay]；*/
 }
 
 button:hover, button:focus {
     cursor: pointer;
-    /* lights up the button when hovered over. Opacity reduced to 80% */
     opacity: 0.8;
 }
 
