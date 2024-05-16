@@ -19,7 +19,7 @@
           3.11 page-header (logo)
           3.12 page-header (navigation-list)
         3.2 navigation-list
-        3.3 profile
+        3.3 main
         3.4 page-footer
 
      4. Components
@@ -49,6 +49,8 @@
 }
 
 body {
+
+    height: 100%;
     
     color: var(--secondary-color);
     font-family: 'Figtree', serif;
@@ -62,9 +64,14 @@ body {
     background-attachment: fixed;
 }
 
+
 /* ================
      2. Typography
    ================ */
+
+h1, h2, h3, main.p {
+    max-width: 75ch;
+}
 
 h1 {
     font-size: 33px;
@@ -81,7 +88,6 @@ a {
 }
 
 a:visited {
-    /* visited link */
     color: var(--text-color);
 }
 
@@ -181,7 +187,7 @@ a:hover, a:focus {
     margin-left: 20px;
 }
 
-/* Contact halo*/
+/* Contact halo */
 .navigation-list li a {
     border-radius: 50%;
     -webkit-transition: -webkit-box-shadow 0.75s;
@@ -191,29 +197,38 @@ a:hover, a:focus {
     padding: 27px 5px 27px 5px;
 }
 
-/* Home halo*/
+/* Home halo */
 .navigation-list li:nth-child(1) a {
     padding: 27px 15px 27px 15px;
 }
 
-/* About halo*/
+/* About halo */
 .navigation-list li:nth-child(2) a {
     padding: 27px 12.5px 27px 12.5px;
 }
 
-/* Work halo*/
+/* Work halo */
 .navigation-list li:nth-child(3) a {
     padding: 27px 17px 27px 17px;
 }
 
-.navigation-list li a:hover {
+.navigation-list li a:hover, .navigation-list li a:focus {
     -webkit-box-shadow:
 	0 0 80px var(--text-color);
             box-shadow:
 	0 0 80px var(--text-color);
 }
 
-/* 3.3 profile */
+/* 3.3 main */
+
+main {
+    padding: 0 75px 0px 75px;
+    opacity: 0;
+    -webkit-transform: translateY(3rem);
+            transform: translateY(3rem);
+    -webkit-animation: fadeInUp 2s forwards;
+            animation: fadeInUp 2s forwards;
+}
 
 .profile {
     display: -webkit-box;
@@ -244,6 +259,65 @@ a:hover, a:focus {
     border-radius: 50%;
 }
 
+#Earth-brackets {
+    padding: 0.25em;
+    font-family: "Source Code Pro", monospace;
+    color: var(--secondary-color);
+}
+
+#Earth {
+    margin: 0.35em;
+    position: relative;
+}
+
+#Earth::before, #Earth::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+#Earth::before {
+    background: var(--primary-color);
+    -webkit-animation: typewriter 1.5s steps(5) 1s forwards;
+            animation: typewriter 1.5s steps(5) 1s forwards;
+}
+
+#Earth::after {
+    width: 0.125em;
+    background: transparent;
+    -webkit-animation: typewriter 1.5s steps(5) 1s forwards,
+	       blink 450ms steps(5) 8;
+            animation: typewriter 1.5s steps(5) 1s forwards,
+	       blink 450ms steps(5) 8;
+}
+
+@-webkit-keyframes typewriter {
+  to {
+    left: 100%;
+  }
+}
+
+@keyframes typewriter {
+  to {
+    left: 100%;
+  }
+}
+
+@-webkit-keyframes blink {
+  to {
+    background: var(--text-color);
+  }
+}
+
+@keyframes blink {
+  to {
+    background: var(--text-color);
+  }
+}
+
 /* 3.4 page-footer */
 
 svg {
@@ -259,6 +333,7 @@ svg {
 .page-footer {
     text-align: center;
     font-size: 12px;
+    margin: 5vh;
 }
 
 @-webkit-keyframes fadeInUp {
@@ -277,15 +352,14 @@ svg {
   }
 }
 
+
 /* ================
     4. Components
    ================ */
 
 /* 4.1 buttons */
 
-button {
-    /* overwrites browser defaults*/
-    /* no border */
+button,input[type=submit] {
     border: 2px solid var(--secondary-color);
     /* takes the font from the outer container --- isn't font family inherited anyway? */
     font-family: inherit;
@@ -297,12 +371,10 @@ button {
     border-bottom: 3px solid var(--dark-orange);
     -webkit-transition: opacity 0.2s;
     transition: opacity 0.2s;
-    /* transition: [transition-property] [transition-duration] [transition-timing-function] [transition-delay]；*/
 }
 
 button:hover, button:focus {
     cursor: pointer;
-    /* lights up the button when hovered over. Opacity reduced to 80% */
     opacity: 0.8;
 }
 

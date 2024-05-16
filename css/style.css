@@ -17,7 +17,8 @@
 
      4. Components
          4.1 buttons
-         4.2 project-list
+         4.2 modal
+         4.3 project-list
 
      5. Media queries
 
@@ -43,6 +44,7 @@
 body {
 
     height: 100%;
+    position: relative;
     
     color: var(--secondary-color);
     font-family: 'Figtree', serif;
@@ -54,12 +56,15 @@ body {
     background-attachment: fixed;
 }
 
-
+.error-message {
+    color: red;
+    font-size: 0.9rem;
+}
 /* ================
      2. Typography
    ================ */
 
-h1, h2, h3, main.p {
+h1, h2, h3, main>p {
     max-width: 75ch;
 }
 
@@ -257,6 +262,7 @@ main {
 /* 3.4 page-footer */
 
 svg {
+    padding: 0 2.5px 0 0;
     text-decoration: none;
 }
 
@@ -312,7 +318,50 @@ button a:hover {
     color: var(--text-color);
 }
 
-/* 4.2 project-list */
+/* 4.2 modal */
+
+#modal-container {
+    display: none;
+}
+
+#modal-container.is-visible {
+
+    /* take up full screen and dim out other content */
+    position: fixed;
+    padding: 20px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+
+    /* to show it above other content */
+    z-index: 999;
+
+    /* this is used to center the modal */
+    display: grid;
+    text-align: center;
+}
+
+.modal {
+    margin: auto;
+    display: inline-block;
+    background: red;
+    padding: 15px;
+    width: 100%;
+    max-width: 700px;
+    text-align: left;
+    border-radius: 20px;
+}
+
+.modal-close {
+    float: right;
+    border: 0;
+    background: none;
+    color: green;
+    text-decoration: underline;
+}
+
+/* 4.3 project-list */
 
 .project-list {
     display: grid;
