@@ -18,13 +18,13 @@
         3.1 page-header
           3.11 page-header (logo)
           3.12 page-header (navigation-list)
-        3.2 navigation-list
-        3.3 main
-        3.4 page-footer
+        3.2 main
+        3.3 page-footer
 
      4. Components
          4.1 buttons
-         4.2 project-list
+         4.2 modal
+         4.3 project-list
 
      5. Media queries
 
@@ -51,6 +51,7 @@
 body {
 
     height: 100%;
+    position: relative;
     
     color: var(--secondary-color);
     font-family: 'Figtree', serif;
@@ -64,12 +65,15 @@ body {
     background-attachment: fixed;
 }
 
-
+.error-message {
+    color: red;
+    font-size: 0.9rem;
+}
 /* ================
      2. Typography
    ================ */
 
-h1, h2, h3, main.p {
+h1, h2, h3, main>p {
     max-width: 75ch;
 }
 
@@ -219,7 +223,7 @@ a:hover, a:focus {
 	0 0 80px var(--text-color);
 }
 
-/* 3.3 main */
+/* 3.2 main */
 
 main {
     padding: 0 75px 0px 75px;
@@ -259,6 +263,9 @@ main {
     border-radius: 50%;
 }
 
+.project-img {
+    width: 95%;
+}
 #Earth-brackets {
     padding: 0.25em;
     font-family: "Source Code Pro", monospace;
@@ -318,9 +325,10 @@ main {
   }
 }
 
-/* 3.4 page-footer */
+/* 3.3 page-footer */
 
 svg {
+    padding: 0 2.5px 0 0;
     text-decoration: none;
 }
 
@@ -387,7 +395,51 @@ button a:hover {
     color: var(--text-color);
 }
 
-/* 4.2 project-list */
+/* 4.2 modal */
+
+#modal-container {
+    display: none;
+}
+
+#modal-container.is-visible {
+
+    /* take up full screen and dim out other content */
+    position: fixed;
+    padding: 20px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+
+    /* to show it above other content */
+    z-index: 999;
+
+    /* this is used to center the modal */
+    display: -ms-grid;
+    display: grid;
+    text-align: center;
+}
+
+.modal {
+    margin: auto;
+    display: inline-block;
+    background: red;
+    padding: 15px;
+    width: 100%;
+    max-width: 700px;
+    text-align: left;
+    border-radius: 20px;
+}
+
+.modal-close {
+    float: right;
+    border: 0;
+    background: none;
+    color: green;
+    text-decoration: underline;
+}
+
+/* 4.3 project-list */
 
 .project-list {
     display: -ms-grid;
@@ -422,21 +474,21 @@ button a:hover {
    5. Media queries
    ================ */
 
-@media all and (max-width: 500px) {
+@media all and (max-width: 1000px) {
     .project-list {
 	-ms-grid-columns: 1fr;
 	grid-template-columns: 1fr;
     }
 }
 
-@media all and (min-width: 500px) and (max-width: 750px){
+@media all and (min-width: 1000px) and (max-width: 1400px){
     .project-list {
 	-ms-grid-columns: 1fr 20px 1fr;
 	grid-template-columns: 1fr 1fr;
     }
 }
 
-@media all and (max-width: 750px){
+@media all and (max-width: 1400px){
     /* shared code */
     .project-list {
 	grid-gap: 10px;

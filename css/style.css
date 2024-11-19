@@ -214,6 +214,9 @@ main {
     border-radius: 50%;
 }
 
+.project-img {
+    width: 95%;
+}
 #Earth-brackets {
     padding: 0.25em;
     font-family: "Source Code Pro", monospace;
@@ -390,19 +393,19 @@ button a:hover {
    5. Media queries
    ================ */
 
-@media all and (max-width: 500px) {
+@media all and (max-width: 1000px) {
     .project-list {
 	grid-template-columns: 1fr;
     }
 }
 
-@media all and (min-width: 500px) and (max-width: 750px){
+@media all and (min-width: 1000px) and (max-width: 1400px){
     .project-list {
 	grid-template-columns: 1fr 1fr;
     }
 }
 
-@media all and (max-width: 750px){
+@media all and (max-width: 1400px){
     /* shared code */
     .project-list {
 	grid-gap: 10px;
