@@ -219,7 +219,9 @@ main {
 
 .project-img {
     width: 95%;
+    max-height: 95vh;
 }
+
 #Earth-brackets {
     padding: 0.25em;
     font-family: "Source Code Pro", monospace;
